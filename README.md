@@ -1,0 +1,227 @@
+# CogniFusion - Advanced Cognitive State Monitoring System
+
+🧠 **CogniFusion** is a comprehensive real-time cognitive state monitoring system that fuses EEG (electroencephalography) and eye-tracking data to classify cognitive load levels (low/medium/high) with advanced analytics and real-time monitoring capabilities.
+
+## 🌟 Key Features
+
+### 📊 Advanced Analytics
+- **Enhanced EEG Features**: Connectivity measures (coherence, phase lag index), entropy metrics (sample entropy, permutation entropy), cross-frequency coupling, fractal dimension
+- **Advanced Eye Features**: Microsaccade detection, pupillometry trend analysis, pupil variability metrics
+- **Statistical Analysis**: Distribution analysis, time-series analysis, correlation analysis, graph metrics
+
+### 🤖 Model Improvements
+- **Enhanced Neural Network**: Cross-modal attention fusion with residual connections
+- **Ensemble Methods**: Neural networks + traditional ML (Random Forest, Gradient Boosting)
+- **Model Interpretability**: Feature importance analysis, attention visualization
+- **Confidence Calibration**: Improved probability estimates
+
+### 🚨 Real-time Monitoring
+- **Intelligent Alerting**: High cognitive load alerts, sustained high load detection, stress alerts
+- **Break Recommendations**: AI-powered break suggestions based on cognitive state
+- **Performance Monitoring**: Real-time confidence scores, stability metrics, response times
+- **Stress Detection**: Multi-indicator stress analysis with mitigation suggestions
+
+### 💾 Data Management
+- **Comprehensive Logging**: SQLite database with structured epoch, session, and alert data
+- **Session Management**: Advanced session recording, playback, and organization
+- **User Profiles**: Historical tracking, baselines, and preferences
+- **Export Capabilities**: CSV, JSON, PDF reports with comprehensive analysis
+
+### 🧪 Testing & Validation
+- **Automated Testing**: Comprehensive unit tests for all components
+- **Performance Benchmarking**: Feature extraction, inference, and end-to-end benchmarks
+- **Validation Metrics**: Classification metrics, calibration analysis, temporal validation
+
+## 🚀 Quick Start
+
+### Installation
+```bash
+pip install -r requirements.txt
+```
+
+### Training (Synthetic Data)
+```bash
+# Generate synthetic data
+python data/simulate_data.py
+
+# Build dataset
+python src/build_dataset.py
+
+# Train model
+python src/train.py
+```
+
+### Real-time Inference
+```bash
+# Start real-time pipeline (synthetic data, no hardware needed)
+python src/realtime_pipeline.py
+
+# With real hardware
+python src/realtime_pipeline.py --eeg muse --eye webcam
+```
+
+### Dashboard
+```bash
+# Terminal 1: Start pipeline
+python src/realtime_pipeline.py
+
+# Terminal 2: Start dashboard
+streamlit run dashboard.py
+```
+
+Open http://localhost:8501 to view the live dashboard.
+
+## 📁 Project Structure
+
+```
+CogniFusion/
+├── data/
+│   ├── simulate_data.py          # Synthetic data generator
+│   ├── notebook_eeamat_analysis.ipynb  # EEG analysis notebook
+│   ├── raw/                      # Raw data storage
+│   └── processed/                # Processed features
+├── src/
+│   ├── eeg_features.py           # Enhanced EEG feature extraction
+│   ├── eye_features.py           # Advanced eye feature extraction
+│   ├── advanced_analytics.py     # Statistical and connectivity analysis
+│   ├── model_improvements.py     # Ensemble and interpretability
+│   ├── dashboard_enhancements.py # Alerting, sessions, export
+│   ├── realtime_features.py     # Break recommendations, stress detection
+│   ├── data_management.py        # Logging, session management
+│   ├── testing_framework.py      # Testing and validation
+│   ├── model.py                  # Fusion model architecture
+│   ├── train.py                  # Training script
+│   ├── realtime_pipeline.py      # Real-time inference
+│   ├── eeg_stream.py             # EEG streaming
+│   └── webcam_eyetracker.py      # Webcam eye tracking
+├── models/                        # Trained models
+├── dashboard.py                   # Streamlit dashboard
+├── requirements.txt              # Python dependencies
+└── README.md                      # This file
+```
+
+## 🔬 Features Overview
+
+### Cognitive Load Classification
+- **3-class classification**: Low, Medium, High cognitive load
+- **Real-time inference**: 4-second epochs with live predictions
+- **Confidence scores**: Probability estimates for each class
+- **Fusion mechanism**: Gated attention fusion of EEG and eye features
+
+### Advanced Features
+- **140 total features**: 110 EEG + 27 eye + 3 connectivity features
+- **Cross-frequency coupling**: Phase-amplitude coupling analysis
+- **Microsaccade detection**: Rapid eye movement analysis
+- **Pupillometry**: Pupil dilation/constriction patterns
+- **Connectivity analysis**: EEG channel coherence and phase coupling
+
+### Real-time Features
+- **Break recommendations**: Intelligent timing based on cognitive state
+- **Stress detection**: Multi-factor stress analysis
+- **Performance monitoring**: System performance and prediction quality
+- **Adaptive difficulty**: Task difficulty suggestions
+- **Alert system**: Real-time notifications for critical states
+
+## 📊 Performance
+
+### Synthetic Data
+- **Accuracy**: 100% on synthetic test set
+- **Features**: 140 features (41% increase from original)
+- **Real-time**: ~100ms per epoch processing time
+- **Model**: Enhanced attention fusion network
+
+### Real Data (Muse + Webcam)
+- **Reference accuracy**: 73% / 0.70 macro-F1 on 113 participants
+- **Subject-wise split**: Generalization to unseen subjects
+- **10,122 epochs**: Comprehensive training dataset
+- **Class performance**: High load easiest to detect
+
+## 🛠️ Technology Stack
+
+- **Core**: Python, NumPy, Pandas, SciPy
+- **ML**: PyTorch, Scikit-learn
+- **Signal Processing**: SciPy.signal, BrainFlow
+- **Computer Vision**: MediaPipe, OpenCV
+- **Dashboard**: Streamlit
+- **Database**: SQLite
+- **Testing**: unittest, pytest
+
+## 🌐 Deployment Options
+
+### Local Deployment
+```bash
+# Run locally with synthetic data
+python src/realtime_pipeline.py
+streamlit run dashboard.py
+```
+
+### Cloud Deployment
+- **Streamlit Cloud**: Deploy dashboard to Streamlit Cloud
+- **Docker**: Containerize the application
+- **Cloud VM**: Deploy to AWS/GCP/Azure
+- **Heroku**: Platform-as-a-service deployment
+
+### Hardware Requirements
+- **Minimum**: 4GB RAM, 2 CPU cores
+- **Recommended**: 8GB RAM, 4 CPU cores
+- **Real EEG**: Muse headset or compatible BrainFlow board
+- **Real Eye**: Webcam with MediaPipe support
+
+## 📝 Usage Examples
+
+### Basic Usage
+```python
+from src.eeg_features import extract_eeg_features
+from src.eye_features import extract_eye_features
+from src.advanced_analytics import AdvancedAnalytics
+
+# Extract features
+eeg_features = extract_eeg_features(eeg_epoch, channel_names=['AF7', 'AF8', 'TP9', 'TP10'])
+eye_features = extract_eye_features(eye_dataframe)
+
+# Advanced analytics
+analytics = AdvancedAnalytics()
+coupling = analytics.compute_cross_frequency_coupling(eeg_epoch)
+patterns = analytics.analyze_temporal_patterns(predictions, timestamps)
+```
+
+### Real-time Monitoring
+```python
+from src.realtime_features import RealTimeFeaturesManager
+
+manager = RealTimeFeaturesManager()
+summary = manager.process_epoch(
+    prediction='high',
+    confidence=0.85,
+    eeg_trust=0.7,
+    eye_trust=0.3,
+    processing_time=0.12
+)
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 👤 Author
+
+**Poorna Sri** - [GitHub](https://github.com/PoornaSri26)
+
+## 🙏 Acknowledgments
+
+- Original EEG + Eye-tracking fusion concept
+- BrainFlow for EEG hardware integration
+- MediaPipe for eye tracking
+- Streamlit for dashboard framework
+
+## 📞 Support
+
+For issues and questions, please open an issue on GitHub.
+
+---
+
+**Note**: The default run uses synthetic EEG and eye data for demonstration. For meaningful predictions with real hardware, retrain on the real dataset and run with `--eeg muse --eye webcam`.
